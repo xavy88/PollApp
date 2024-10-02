@@ -1,5 +1,6 @@
 import { Link, Stack } from 'expo-router';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const polls = [{id: 1},{id: 2},{id: 3},{id: 4}];
 
@@ -7,6 +8,11 @@ export default function HomeScreen() {
   return (
     <>
     <Stack.Screen options={{title:'Polls',
+      headerRight:()=>
+       <Link href={'/polls/new'}> 
+       <Entypo name="circle-with-plus" size={24} color="white" /> 
+       </Link>
+       ,
       headerStyle:{
         backgroundColor:'#09b4e8',
       },
