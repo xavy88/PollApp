@@ -19,9 +19,8 @@ export default function CreatePoll(){
             <TextInput value={question} onChangeText={setQuestion} style={styles.input} placeholder="Type your question here" />
             <Text style={styles.label}> Options</Text>
             {options.map((option, index) =>(
-                <View style={{justifyContent:'center'}}>
+                <View key={index}  style={{justifyContent:'center'}}>
                 <TextInput 
-                key={index} 
                 value={option} 
                 onChangeText={(text)=>{
                     const updated = [...options];

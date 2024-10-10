@@ -3,7 +3,7 @@ import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
-
+import EvilIcons from '@expo/vector-icons/EvilIcons';
 //const polls = [{id: 1},{id: 2},{id: 3},{id: 4}];
 
 export default function HomeScreen() {
@@ -27,6 +27,7 @@ export default function HomeScreen() {
     <>
       <Stack.Screen options={{
         title: 'Polls',
+        headerTitleAlign: 'center',
         headerRight: () =>
           <Link href={'/polls/new'}>
             <Entypo name="circle-with-plus" size={24} color="white" />
@@ -40,6 +41,10 @@ export default function HomeScreen() {
           fontWeight: 'bold',
           fontSize: 25,
         },
+        headerLeft:() =>
+          <Link href={'/profile'}>
+            <EvilIcons name="user" size={30} color="white" />
+          </Link>
       }} />
       <FlatList
         data={polls}
