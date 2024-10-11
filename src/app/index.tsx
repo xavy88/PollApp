@@ -4,10 +4,12 @@ import Entypo from '@expo/vector-icons/Entypo';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
-//const polls = [{id: 1},{id: 2},{id: 3},{id: 4}];
+import { Poll } from '../types/db';
+
+
 
 export default function HomeScreen() {
-  const [polls, setPolls] = useState([]);
+  const [polls, setPolls] = useState<Poll[]>([]);
 
   useEffect(() => {
     const fetchPolls = async () => {
@@ -51,7 +53,8 @@ export default function HomeScreen() {
         contentContainerStyle={styles.container}
         renderItem={({ item }) => (
           <Link href={`/polls/${item.id}`} style={styles.pollContainer}>
-            <Text style={styles.pollTitle} >{item.id}Question Poll Example</Text>
+            <EvilIcons name="question" size={16} color="white" />
+            <Text style={styles.pollTitle} >{item.question}</Text>
           </Link>
         )}
       />

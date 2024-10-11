@@ -1,21 +1,39 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { Button, Pressable, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Button, Pressable, StyleSheet, Text, View } from "react-native";
 import Feather from '@expo/vector-icons/Feather';
-import { useState } from "react";
-
-const poll ={
-    question: 'Favorite CMS',
-    options:['Wordpress', 'Drupal', 'Joomla'],
-}
+import { useEffect, useState } from "react";
+import { Poll } from "../../types/db";
+import { supabase } from "../../lib/supabase";
 
 export default function PollDetaila(){
     const {id} = useLocalSearchParams<{id:string}>();
-    const [selected, setSelected] = useState('Wordpress');
+    const [poll, setPoll] = useState<Poll>(null);
+    const [selected, setSelected] = useState('');
+
+    useEffect(() => {
+        const fetchPolls = async () => {
+          console.log('Fetching data...');
+    
+          let { data, error } = await supabase
+            .from('polls')
+            .select('*')
+            .eq('id', id)
+            .single();
+          if (error) {
+            Alert.alert('Error fetching data...');
+          }
+          setPoll(data);
+        };
+        fetchPolls();
+      }, []);
+
     const vote =()=>{
         console.warn('Vote: ', selected)
     }
 
-
+    if (!poll) {
+        return <ActivityIndicator />;
+    }
     return (
         <View style={styles.container}>
             <Stack.Screen options={{title:'Poll Voting'}}/>
