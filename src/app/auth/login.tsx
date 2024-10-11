@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Alert, StyleSheet, View, AppState, Button, TextInput, Text } from 'react-native'
 import { supabase } from '../../lib/supabase'
+import { Stack } from 'expo-router'
 
 
 // Tells Supabase Auth to continuously refresh the session automatically if
@@ -48,6 +49,7 @@ export default function Auth() {
 
   return (
     <View style={styles.container}>
+      <Stack.Screen options={{title:"Login"}} />
         <Text style={{fontWeight:'700', fontSize:18}}>Sign In or Create an Account</Text>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <TextInput
