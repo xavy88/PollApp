@@ -50,9 +50,13 @@ export default function CreatePoll() {
 
     return (
         <View style={styles.container}>
-            <Stack.Screen options={{ title: 'Create a Poll' }} />
+            <Stack.Screen options={{ title: 'Create a Poll', headerTintColor: '#ffffff',headerTitleStyle: {
+    color: 'white'
+  }, headerStyle: {
+          backgroundColor: '#1F2937'
+        },}} />
             <Text style={styles.label}> Title</Text>
-            <TextInput value={question} onChangeText={setQuestion} style={styles.input} placeholder="Type your question here" />
+            <TextInput value={question} onChangeText={setQuestion} style={styles.input} placeholder="Type your question here" placeholderTextColor="#fff" />
             <Text style={styles.label}> Options</Text>
             {options.map((option, index) => (
                 <View key={index} style={{ justifyContent: 'center' }}>
@@ -62,7 +66,8 @@ export default function CreatePoll() {
                             const updated = [...options];
                             updated[index] = text;
                             setOptions(updated);
-                        }} style={styles.input} placeholder={`Options ${index + 1}`} />
+                        }} style={styles.input} placeholder={`Options ${index + 1}`}
+                        placeholderTextColor="#fff"  />
                     <Ionicons
                         name="close-circle"
                         size={30}
@@ -89,16 +94,20 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         gap: 5,
+        backgroundColor: '#111827',
+        minHeight:'100%',
     },
     label: {
         fontWeight: '600',
         marginTop: 10,
+        color:'white'
     },
     input: {
-        backgroundColor: 'white',
+        backgroundColor: '#1F2937',
         padding: 18,
         borderRadius: 5,
-        borderColor: 'navy',
+        borderColor: '#818CF8',
         borderWidth: 1,
+        color:'white',
     },
 })

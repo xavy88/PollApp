@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { supabase } from "../lib/supabase";
 import { Session } from "@supabase/supabase-js";
 import { useAuth } from "../providers/AuthProvider";
@@ -17,8 +17,12 @@ export default function ProfileScreen(){
   }
 
     return(
-        <View style={{padding:10}}>
-            <Text>User ID: {user?.email}</Text>
+        <View style={{padding:20}}>
+          <Image
+          style={{width: '100%', height: '80%'}}
+          source={{uri:'https://www.shutterstock.com/image-vector/mobile-app-account-registered-successfully-600nw-2313296639.jpg'}}
+      />
+            <Text style={{padding:8, fontWeight:'bold', fontSize:18}}>User ID: {user?.email}</Text>
             <Button title="Sign out" onPress={()=> supabase.auth.signOut()} />
         </View>
     )

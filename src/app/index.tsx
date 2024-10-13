@@ -1,5 +1,5 @@
 import { Link, Stack } from 'expo-router';
-import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
@@ -36,7 +36,7 @@ export default function HomeScreen() {
           </Link>
         ,
         headerStyle: {
-          backgroundColor: '#09b4e8',
+          backgroundColor: '#1F2937',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
@@ -48,6 +48,11 @@ export default function HomeScreen() {
             <EvilIcons name="user" size={30} color="white" />
           </Link>
       }} />
+      
+      <Image
+          style={{width: 410, height: '30%'}}
+          source={{uri:'https://static.vecteezy.com/system/resources/previews/001/829/795/large_2x/people-fly-flag-to-choose-yes-or-no-to-give-feedback-online-polling-mobile-apps-to-choose-to-agree-or-disagree-on-an-issue-or-problem-illustration-for-web-landing-page-banner-mobile-apps-free-vector.jpg'}}
+      />
       <FlatList
         data={polls}
         contentContainerStyle={styles.container}
@@ -65,14 +70,16 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0b0652',
+    backgroundColor: '#111827',
     padding: 10,
     gap: 5,
   },
   pollContainer: {
     padding: 10,
     borderRadius: 5,
-    backgroundColor: '#09b4e8',
+    borderWidth:1,
+    backgroundColor: '#1F2937',
+    borderColor:'#818CF8'
   },
   pollTitle: {
     color: '#fff',

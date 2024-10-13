@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, StyleSheet, View, AppState, Button, TextInput, Text } from 'react-native'
+import { Alert, StyleSheet, View, AppState, Button, TextInput, Text, Image } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import { Stack } from 'expo-router'
 
@@ -49,14 +49,23 @@ export default function Auth() {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{title:"Login"}} />
-        <Text style={{fontWeight:'700', fontSize:18}}>Sign In or Create an Account</Text>
+      <Stack.Screen options={{ title: 'Login', headerTintColor: '#ffffff',headerTitleStyle: {
+    color: 'white'
+  }, headerStyle: {
+          backgroundColor: '#1F2937'
+        },}} />
+        <Image
+          style={{width: '100%', height: '40%'}}
+          source={{uri:'https://static.vecteezy.com/system/resources/previews/001/991/652/large_2x/sign-in-page-flat-design-concept-illustration-icon-account-login-user-login-abstract-metaphor-can-use-for-landing-page-mobile-app-ui-posters-banners-free-vector.jpg'}}
+      />
+        <Text style={{fontWeight:'700', fontSize:18, color:'white'}}>Sign In or Create an Account</Text>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <TextInput
           onChangeText={(text) => setEmail(text)}
           value={email}
           placeholder="email@address.com"
           autoCapitalize={'none'}
+          placeholderTextColor="#fff"
           style={styles.input}
         />
       </View>
@@ -67,6 +76,7 @@ export default function Auth() {
           secureTextEntry={true}
           placeholder="Password"
           autoCapitalize={'none'}
+          placeholderTextColor="#fff"
           style={styles.input}
         />
       </View>
@@ -84,6 +94,8 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 40,
     padding: 12,
+    backgroundColor: '#111827',
+    minHeight:'100%'
   },
   verticallySpaced: {
     paddingTop: 4,
@@ -94,10 +106,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   input:{
-    backgroundColor: 'white',
+    backgroundColor: '#1F2937',
     padding:18,
     borderRadius:5,
-    borderColor:'navy',
-    borderWidth:1,
+    borderColor: '#818CF8',
+    borderWidth: 1,
+    color:'white',
 },
 })
